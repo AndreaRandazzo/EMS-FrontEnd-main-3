@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HR Horizon</title>
+  <link rel="stylesheet" href="../css/infoDepartment.css">
+</head>
+<body>
+  <header class="header">
+    <h1>HR Horizon</h1>
+    <div class="button-group">
+      <a href="dashboard.html" class="back-button">Go back</a>
+      <button id="export-excel-button">Export to Excel</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="department-info">
+      <h2 id="department-name">Department Name</h2>
+      <p id="department-description">Department Description</p>
+      <p>Number of Employees: <span id="department-number-of-employees">X</span></p>
+    </section>
+
+    <h3>Employees</h3>
+    <div id="myGrid" class="ag-theme-custom">
+      <table id="employees-table" class="table">
+        <thead>
+          <tr>
+            <th>
+              First Name
+              <div class="sort-button-group">
+                <button class="sort-button down-sort" data-sort="firstName">▼</button>
+                <button class="sort-button up-sort" data-sort="firstName">▲</button>
+              </div>
+            </th>
+            <th>
+              Last Name
+              <div class="sort-button-group">
+                <button class="sort-button down-sort" data-sort="lastName">▼</button>
+                <button class="sort-button up-sort" data-sort="lastName">▲</button>
+              </div>
+            </th>
+            <th>
+              Email
+              <div class="sort-button-group">
+                <button class="sort-button down-sort" data-sort="email">▼</button>
+                <button class="sort-button up-sort" data-sort="email">▲</button>
+              </div>
+            </th>
+            <th>
+              Role
+              <div class="sort-button-group">
+                <button class="sort-button down-sort" data-sort="role">▼</button>
+                <button class="sort-button up-sort" data-sort="role">▲</button>
+              </div>
+            </th>
+            <th>
+              Address
+              <div class="sort-button-group">
+                <button class="sort-button down-sort" data-sort="address">▼</button>
+                <button class="sort-button up-sort" data-sort="address">▲</button>
+              </div>
+            </th>
+            <th>
+              Phone
+            </th>
+            <th>
+              Hire Date
+              <div class="sort-button-group">
+                <button class="sort-button down-sort" data-sort="hireDate">▼</button>
+                <button class="sort-button up-sort" data-sort="hireDate">▲</button>
+              </div>
+            </th>
+            <th>
+              Birth Date
+              <div class="sort-button-group">
+                <button class="sort-button down-sort" data-sort="birthDate">▼</button>
+                <button class="sort-button up-sort" data-sort="birthDate">▲</button>
+              </div>
+            </th>
+            <th>
+              Fiscal Code
+            </th>
+            <th>Department</th>
+          </tr>
+        </thead>
+        <tbody id="table-content">
+          <!-- Table content will be dynamically generated here -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="../js/infoDepartment.js"></script>
+</body>
+</html>

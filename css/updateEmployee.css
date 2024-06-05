@@ -1,0 +1,114 @@
+:root{
+    --background: #2e86d8;
+    --btn: #2e86d8;
+    --btnHover: #2e86d8c7;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, var(--background), var(--btnHover));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;    
+}
+
+.header{
+    width: 100%;
+    height: min-content;
+}
+
+p {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-div{
+    display: flex;
+    width: 100%;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 50%;
+}
+
+.info label {
+    align-self: flex-start;
+    color: white;
+    margin-left: 10%;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.info input, .info select {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(15px);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 80%;
+}
+
+.info input::placeholder {
+    color: #f0f0f0;
+}
+
+.info input:focus, .info select:focus {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.info input[type="file"] {
+    padding: 5px;
+}
+
+form input[type="submit"], button#back {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--btn);
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover, button#back:hover {
+    background-color: var(--btnHover);
+}

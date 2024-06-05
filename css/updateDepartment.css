@@ -1,0 +1,74 @@
+:root{
+    --background: #2e86d8;
+    --btn: #2e86d8;
+    --btnHover: #2e86d8c7;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, var(--background), var(--btnHover));
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 b {
+    color: white;
+}
+
+a {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#update-department {
+    width: 30%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button, a{
+    display: block;
+    margin: 0 auto;
+    background-color: var(--btn);
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover, a:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
