@@ -39,6 +39,11 @@ body {
     margin-bottom: 20px;
 }
 
+#actions-container{
+    display: flex;
+    gap: 10px;
+}
+
 
 .main {
     display: flex;
@@ -127,7 +132,7 @@ h3{
     gap: 10px;
 }
 
-.employee-actions button, #addEmployee{
+.employee-actions button, #addEmployee, #logout{
     max-height: 40px;
     padding: 10px 15px;
     background-color: var(--btn);
@@ -139,7 +144,7 @@ h3{
     font-size: 14px;
 }
 
-.employee-actions button:hover, #addEmployee:hover {
+.employee-actions button:hover, #addEmployee:hover, #logout:hover {
     background-color: var(--btnHover);
 }
 

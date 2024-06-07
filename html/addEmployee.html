@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../css/add-employee.css">
 </head>
 <body>
+    <div id="loading" class="loading">
+        Loading...
+    </div>
     <header>
         <div class="container">
             <h1>Hr Horizon</h1>
@@ -62,9 +65,17 @@
                 <label for="photo">Photo</label>
                 <input type="file" accept="image/*" id="photo" name="photo">
             </div>
+
+            <div class="form-group">
+                <label for="roleEnum">Privilegies</label>
+                <select  id="roleEnum" name="roleEnum">
+                    <option value="0">ADMIN</option>
+                    <option value="1">MANAGER</option>
+                    <option value="2">EMPLOYEE</option>
+                </select>
+            </div>
             <button id="add-employee" type="submit">Add Employee</button>
         </form>
-        <p id="errorMsg" class="inactive"></p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>

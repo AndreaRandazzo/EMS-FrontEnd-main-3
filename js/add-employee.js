@@ -6,6 +6,14 @@ $(document).ready(function() {
         return;
     }
 
+    function showLoading() {
+        $('#loading').show();
+    }
+
+    function hideLoading() {
+        $('#loading').hide();
+    }
+
 
     // Call to populate Department Select
     var settings = {
@@ -37,10 +45,10 @@ $(document).ready(function() {
 
         if ($('#firstName').val() === '' || $('#lastName').val() === '' || $('#email').val() === '' || $('#role').val() === '' || $('#hireDate').val() === '' || $('#birthDate').val() === '' || $('#phone').val() === '' || $('#address').val() === '' || $('#department-select').val() === '' || $('#fiscalCode').val() === '') {
             console.log("Please fill in all required fields.");
-            $('#errorMsg').removeClass('inactive');
-            $('#errorMsg').text('Please fill in all required fields.');
+            alert('Please fill in all required fields.');
             return;
         } else {
+            showLoading();
 
             var settings = {
                 "url": "http://localhost:8080/admin/employee/add",
@@ -62,42 +70,53 @@ $(document).ready(function() {
                     "department": {
                         "id": $('#department-select').val()
                     },
-                    "fiscalCode": $('#fiscalCode').val()
+                    "fiscalCode": $('#fiscalCode').val(),
+                    "roleEnum": $('#roleEnum').val()
                 }),
             };
 
             $.ajax(settings).done(function(response) {
+                console.log(response);
                 sessionStorage.setItem('employeeId', response.id);
 
+                let photoFile = $('#photo')[0].files[0];
+                if (photoFile) {
                 // Call to upload the photo
             
-                var form = new FormData();
-                form.append("image", $('#photo')[0].files[0]);
-                let employeeId = sessionStorage.getItem('employeeId');
+                    var form = new FormData();
+                    form.append("image", $('#photo')[0].files[0]);
+                    let employeeId = sessionStorage.getItem('employeeId');
 
-                var uploadSettings = {
-                    "url": "http://localhost:8080/admin/employee/uploadPhoto/" + employeeId,
-                    "method": "POST",
-                    "timeout": 0,
-                    "headers": {
-                        "Authorization": token
-                    },
-                    "processData": false,
-                    "mimeType": "multipart/form-data",
-                    "contentType": false,
-                    "data": form
-                };
+                    var uploadSettings = {
+                        "url": "http://localhost:8080/admin/employee/uploadPhoto/" + employeeId,
+                        "method": "POST",
+                        "timeout": 0,
+                        "headers": {
+                            "Authorization": token
+                        },
+                        "processData": false,
+                        "mimeType": "multipart/form-data",
+                        "contentType": false,
+                        "data": form
+                    };
 
-                $.ajax(uploadSettings).done(function(response) {
-                    console.log(response);
+                    $.ajax(uploadSettings).done(function(response) {
+                        console.log(response);
+                        hideLoading();
+                        window.location.href = "dashboard.html";
+                    }).fail(function(jqXHR, textStatus, errorThrown) {
+                        console.error("Error uploading photo:", textStatus, errorThrown);
+                        hideLoading();
+                        window.location.href = "dashboard.html";
+                    });
+                } else {
+                    hideLoading();
                     window.location.href = "dashboard.html";
+                }
                 }).fail(function(jqXHR, textStatus, errorThrown) {
-                    console.error("Error uploading photo:", textStatus, errorThrown);
+                    console.error("Error adding employee:", textStatus, errorThrown);
+                    hideLoading();
                 });
-
-            }).fail(function(jqXHR, textStatus, errorThrown) {
-                console.error("Error adding employee:", textStatus, errorThrown);
-            });
    }});
     
 });

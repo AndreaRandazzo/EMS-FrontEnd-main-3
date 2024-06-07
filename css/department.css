@@ -39,6 +39,11 @@ body {
     margin-bottom: 20px;
 }
 
+#actions-container{
+    display: flex;
+    gap: 10px;
+}
+
 .main {
     display: flex;
     flex-direction: row;
@@ -114,7 +119,7 @@ h3{
     gap: 10px;
 }
 
-.department-actions button, #addDepartment {
+.department-actions button, #addDepartment, #logout {
     max-height: 40px;
     padding: 10px 15px;
     background-color: var(--btn);
@@ -126,7 +131,7 @@ h3{
     font-size: 14px;
 }
 
-.department-actions button:hover, #addDepartment:hover {
+.department-actions button:hover, #addDepartment:hover, #logout:hover {
     background-color: var(--btnHover);
 }
 

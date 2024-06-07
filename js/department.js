@@ -16,6 +16,11 @@ $(document).ready(function () {
     window.location.href = 'add-department.html';
   })
 
+  $('#logout').on('click', function() {
+    sessionStorage.setItem('token',null);
+    window.location.href = 'index.html';
+  })
+
   //Function to get all department
 
   function getAllDepartment() {

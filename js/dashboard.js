@@ -15,6 +15,10 @@ $(document).ready(function () {
     window.location.href = 'addEmployee.html';
   })
 
+  $('#logout').on('click', function() {
+    sessionStorage.setItem('token',null);
+    window.location.href = 'index.html';
+  })
 
 
   let allEmployees = [];
@@ -134,9 +138,8 @@ function deleteEmployee(employeeId) {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-    })
-    .then((result) => window.location.reload())
-    .catch((error) => console.error("Error:", error));
+      window.location.reload();
+    }).catch((error) => console.error("Error:", error));
 }
 //--------------------------
 
