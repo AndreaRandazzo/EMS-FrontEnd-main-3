@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="../css/add-employee.css">
 </head>
 <body>
-    <div id="loading" class="loading">
-        Loading...
-    </div>
+    <div id="loading" class="loader"></div>
     <header>
         <div class="container">
             <h1>Hr Horizon</h1>
@@ -58,9 +56,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="fiscalCode">Fiscal Code</label>
-                <input type="text" id="fiscalCode" required placeholder="Fiscal Code">
+                <label for="city">City</label>
+                <input type="text" id="city" required placeholder="City">
             </div>
+
+            
             <div class="form-group">
                 <label for="photo">Photo</label>
                 <input type="file" accept="image/*" id="photo" name="photo">
@@ -74,7 +74,22 @@
                     <option value="2">EMPLOYEE</option>
                 </select>
             </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select  id="gender" name="gender">
+                    <option value="M">MALE</option>
+                    <option value="F">FEMALE</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="fiscalCode">Fiscal Code</label>
+                <input type="text" id="fiscalCode" required placeholder="Fiscal Code">
+            </div>
+
             <button id="add-employee" type="submit">Add Employee</button>
+            <button id="generateCF" type="button">Generate fiscal code</button>
         </form>
     </div>
 

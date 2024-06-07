@@ -25,16 +25,44 @@ form.addEventListener('submit', function(event) {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        window.location.href = 'dashboard.html';
-        return response.headers;
-    })
-    .then(headers => {
-        const token = headers.get('Authorization'); 
-        if (token) {
-            sessionStorage.setItem('token', token); 
-        } else {
-            console.error('Token not found in response headers');
+        //Check user role to load the admin/employee dashboard
+        
+        let token = response.headers.get('Authorization');
+        let tokenPayload = parseJwt(token);
+        let role = tokenPayload.role;
+        sessionStorage.setItem('token', token); 
+        sessionStorage.setItem('role', role);
+        console.log(role);
+
+        switch (role) {
+            case "ADMIN":
+                window.location.href = 'dashboard.html';
+                break;
+            case "EMPLOYEE":
+                window.location.href = 'employee-dashboard.html';
+                break;
+            case 'MANAGER':
+                window.location.href = 'manager-dashboard.html';
+                break;
+
+
         }
     })
-    .catch(error => console.error('Error:', error));
+    .catch(function(jqXHR, textStatus, errorThrown) {
+        let errorMessageObj = jqXHR.responseJSON;
+        let errorMessage = errorMessageObj.message;
+        console.error(errorMessage);
+        alert(errorMessage + '. Please try again.');
+    });
 });
+
+
+function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+}

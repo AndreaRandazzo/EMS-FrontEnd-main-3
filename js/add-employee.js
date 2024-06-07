@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     let token = sessionStorage.getItem('token');
 
@@ -38,6 +39,44 @@ $(document).ready(function() {
     }).fail(function(jqXHR, textStatus, errorThrown) {
         console.error("Error fetching departments:", textStatus, errorThrown);
     });
+
+    $('#generateCF').on('click', function(event) {
+        event.preventDefault();
+
+        let lname = $('#lastName').val();
+        let fname = $('#firstName').val();
+        let gender = $('#gender').val();
+        let city = $('#city').val();
+        let birthDate = new Date($('#birthDate').val());
+        let day = birthDate.getDate();
+        let month = birthDate.getMonth() + 1; // getMonth() returns month from 0-11
+        let year = birthDate.getFullYear();
+
+        if (lname && fname && gender && city && !isNaN(day) && !isNaN(month) && !isNaN(year)) {
+            $.ajax({
+                "url": `http://localhost:8080/api/generateFiscalCode`,
+                "method": "GET",
+                "timeout": 0,
+                "data": {
+                    lname: lname,
+                    fname: fname,
+                    gender: gender,
+                    city: city,
+                    day: day,
+                    month: month,
+                    year: year
+                }
+            }).done(function(response) {
+                let responseObject = JSON.parse(response);
+                $('#fiscalCode').val(responseObject.data.cf);
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+                console.error("Error generating fiscal code:", textStatus, errorThrown);
+                alert('Error generating fiscal code. Please try again.');
+            });
+        } else {
+            alert('Please fill in all required fields to generate the fiscal code.');
+        }
+    })
 
     // Call to add the employee
     $('#employee-form').on('submit', function(event) {
@@ -114,10 +153,19 @@ $(document).ready(function() {
                     window.location.href = "dashboard.html";
                 }
                 }).fail(function(jqXHR, textStatus, errorThrown) {
-                    console.error("Error adding employee:", textStatus, errorThrown);
+                    let errorMessageObj = jqXHR.responseJSON;
+                    let errorMessage = errorMessageObj.message;
+                    let endIndex = errorMessage.indexOf("employee");
+                    endIndex += "employee".length;
+                    errorMessage = errorMessage.substr(0,endIndex);
+                    console.error(errorMessage);
+                    alert(errorMessage + '. Please try again.');
                     hideLoading();
                 });
    }});
     
 });
+
+
+
 
