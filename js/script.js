@@ -30,9 +30,14 @@ form.addEventListener('submit', function(event) {
         let token = response.headers.get('Authorization');
         let tokenPayload = parseJwt(token);
         let role = tokenPayload.role;
+        let id = tokenPayload.id;
         sessionStorage.setItem('token', token); 
         sessionStorage.setItem('role', role);
+        sessionStorage.setItem('id', id);
+
         console.log(role);
+        console.log(id);
+
 
         switch (role) {
             case "ADMIN":
@@ -50,9 +55,9 @@ form.addEventListener('submit', function(event) {
     })
     .catch(function(jqXHR, textStatus, errorThrown) {
         let errorMessageObj = jqXHR.responseJSON;
-        let errorMessage = errorMessageObj.message;
-        console.error(errorMessage);
-        alert(errorMessage + '. Please try again.');
+        //let errorMessage = errorMessageObj.message;
+        //console.error(errorMessage);
+        //alert(errorMessage + '. Please try again.');
     });
 });
 
@@ -65,4 +70,14 @@ function parseJwt (token) {
     }).join(''));
 
     return JSON.parse(jsonPayload);
+}
+
+function showPassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+
 }

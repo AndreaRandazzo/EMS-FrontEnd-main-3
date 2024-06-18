@@ -39,7 +39,7 @@ form h2 {
     color: white;
 }
 
-form input {
+form input[type=text], form input[type=password] {
     width: 100%;
     margin-bottom: 15px;
     padding: 15px;
@@ -75,4 +75,12 @@ form button {
 
 form button:hover {
     background-color: var(--btnHover);
+}
+
+#showPasswordDiv{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    color: #f0f0f0;
 }
