@@ -3,7 +3,17 @@ $(document).ready(function() {
     let employeeId = sessionStorage.getItem('id');
 
     findEmployeeById(employeeId, token);
+
+    $('#logoutBtn').on('click', function() {
+        handleLogout();
+    })
 });
+
+
+function handleLogout() {
+    sessionStorage.clear();
+    window.location.href = 'index.html';
+}
 
 function findEmployeeById(id, token) {
     var settings = {

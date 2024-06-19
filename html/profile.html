@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hr Horizon - Account</title>
+    <link rel="stylesheet" href="../css/manager/profile.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Hr Horizon</h2>
+        <a href="manager-dashboard.html">All Requests</a>
+        <a href="pending-requests.html">Pending Requests</a>
+        <a href="accepted-requests.html">Accepted Requests</a>
+        <a href="rejected-requests.html">Rejected Requests</a>
+        <a href="team.html">My Team</a>
+        <a href="profile.html">My Account</a>
+
+    </div>
+    <div class="content">
+        <div class="top-bar">
+            <button id="requestTimeOffBtn">Request Time Off</button>
+            <button id="logoutBtn">Logout</button>
+        </div>
+        <h1>Account Settings</h1>
+        <nav>
+            <button>Profile</button>
+            <button>Notification</button>
+            <button>Settings</button>
+
+        </nav>
+        
+        <div id="info-profile">
+            <div id="avatar-container">
+                <h4>Your Avatar</h4>
+                <div id="img-container">
+                    <img src="../res/user.png" alt="">
+                    <button id="upload-img">Upload New</button>
+                    <button id="delete-img">Delete Avatar</button>
+                </div>
+            </div>
+            <hr>
+            <form id="info-form" action="">
+                <label for="full-name">Your Full Name</label>
+                <input id="full-name" type="text" required>
+                <label for="role">Role</label>
+                <input id="role" type="text" readonly>
+                <label for="email">Email</label>
+                <input id="email" type="text" required>
+                <label for="password">Password</label>
+                <div class="password-container">
+                    <input id="password" type="password" required>
+                    <span class="toggle-password">👁️</span>
+                </div>
+                <label for="bio">Bio</label>
+                <textarea name="bio" id="bio" placeholder="Write your bio here!"></textarea>
+                <button>Update profile</button>
+            </form>
+        </div>
+        <div id="info-password"></div>
+        <div id="info-email"></div>
+        <div id="notification"></div>
+        <div id="settings"></div>
+
+        
+
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>’
+    <script src="../js/profile.js"></script>
+</body>
+</html>

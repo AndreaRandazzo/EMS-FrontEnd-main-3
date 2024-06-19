@@ -71,7 +71,7 @@ h1 {
 }
 
 /* Container for time-off requests */
-#timeOffRequestsContainer {
+#timeOffRequestsContainer, #info-account {
     width: 100%;
     margin-top: 60px;
     padding: 20px;

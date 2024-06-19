@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  
+  console.log(sessionStorage);
   const employeesTab = document.getElementById("employees-tab");
   const departmentTab = document.getElementById("department-tab");
 

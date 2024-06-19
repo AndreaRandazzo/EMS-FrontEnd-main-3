@@ -127,7 +127,7 @@ $(document).ready(function() {
                     let employeeId = sessionStorage.getItem('employeeId');
 
                     var uploadSettings = {
-                        "url": "http://localhost:8080/admin/employee/uploadPhoto/" + employeeId,
+                        "url": "http://localhost:8080/employee/uploadPhoto/" + employeeId,
                         "method": "POST",
                         "timeout": 0,
                         "headers": {

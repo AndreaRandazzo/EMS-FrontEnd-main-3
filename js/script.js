@@ -54,10 +54,7 @@ form.addEventListener('submit', function(event) {
         }
     })
     .catch(function(jqXHR, textStatus, errorThrown) {
-        let errorMessageObj = jqXHR.responseJSON;
-        //let errorMessage = errorMessageObj.message;
-        //console.error(errorMessage);
-        //alert(errorMessage + '. Please try again.');
+        
     });
 });
 
